@@ -7,19 +7,21 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    private PlayerController playerController;
+    public Rigidbody2D rigidbody2D;
     [SerializeField]
+    private PlayerController playerController;
 
     void Start()
     {
-        playerController = new PlayerController(this.GetComponent<CharacterController>());
+        playerController = new PlayerController();
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        playerController.ActionMove();
+        playerController.ActionMove(rigidbody2D);
     }
 
 }

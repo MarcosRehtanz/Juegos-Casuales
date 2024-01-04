@@ -6,23 +6,16 @@ namespace PlayerManager
     [Serializable]
     public class PlayerController
     {
-        public CharacterController characterController;
-        public float speed { get; set; } = 10.0f;
-
-
-        public PlayerController(CharacterController character)
+        public float Speed = 1000.0f;
+    
+        public void ActionMove(Rigidbody2D rb2D)
         {
-            characterController = character;
-        }
+            float dirX = Input.GetAxis("Horizontal") * Speed;
+            float dirY = Input.GetAxis("Vertical") * Speed;
 
-        public void ActionMove()
-        {
-            float dirX = Input.GetAxis("Horizontal") * speed;
-            float dirY = Input.GetAxis("Vertical") * speed;
+           Vector2 v2 = new Vector2(dirX, dirY) * Time.deltaTime;
 
-            Vector3 move = new Vector3(dirX, dirY, 0) * Time.deltaTime;
-
-            characterController.Move(move);
+            rb2D.velocity = v2;
         }
     }
 
