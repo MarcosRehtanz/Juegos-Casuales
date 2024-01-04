@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace PlayerManager
 {
-
+    [Serializable]
     public class PlayerController
     {
         public CharacterController characterController;
         public float speed { get; set; } = 10.0f;
+
 
         public PlayerController(CharacterController character)
         {
