@@ -5,12 +5,12 @@ namespace Statistics.Models
     [Serializable]
     public class StatisticsModel
     {
-        public float Healt { get; set; }
-        public float? Damage { get; set; }
-        public float? SpeedAttack { get; set; }
-        public int? Speed { get; set; }
-        public int? Range { get; set; }
-        public float? Armor { get; set; }
+        public float Healt = 0;
+        public float Damage = 0;
+        public float SpeedAttack = 0;
+        public float Speed = 0;
+        public float Range = 0;
+        public float Armor = 0;
     }
 
 

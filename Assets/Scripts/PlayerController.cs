@@ -1,21 +1,37 @@
-using System;
 using UnityEngine;
+using Actions.Controllers;
+using Statistics.Models;
+using Animations.Controller;
 
 namespace PlayerManager
 {
-    [Serializable]
-    public class PlayerController
+    public class PlayerController : MonoBehaviour
     {
-        public float Speed;
+        public StatisticsModel Stats;
+        public Rigidbody2D Rb2D;
+        public ActionsController Actions;
+        public AnimationsController Animations;
 
-        public void ActionMove(Rigidbody2D rb2D)
+        public void Inizalizer()
         {
-            float dirX = Input.GetAxis("Horizontal") * Speed;
-            float dirY = Input.GetAxis("Vertical") * Speed;
+            Stats = new StatisticsModel
+            {
+                Speed = 50
+            };
+            Rb2D = GetComponent<Rigidbody2D>();
+            Actions = new ActionsController(Stats);
+            Animations = new AnimationsController
+            {
+                animator = GetComponent<Animator>(),
+                transform = GetComponent<Transform>()
+            };
+        }
 
-            Vector2 v2 = new Vector2(dirX, dirY) * Time.deltaTime;
-
-            rb2D.velocity = v2;
+        public void ActionMove()
+        {
+            Actions.Move();
+            Animations.Move(Actions.moveDirection);
+            Rb2D.velocity = Actions.moveDirection;
         }
     }
 
