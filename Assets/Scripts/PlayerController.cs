@@ -11,13 +11,14 @@ namespace PlayerManager
         public Rigidbody2D Rb2D;
         public ActionsController Actions;
         public AnimationsController Animations;
+        public Vector2 MoveDirection;
 
         public void Inizalizer()
         {
-            Stats = new StatisticsModel
+            Stats = new StatisticsModel(new StatsBasic()
             {
-                Speed = 50
-            };
+                Speed = 16
+            });
             Rb2D = GetComponent<Rigidbody2D>();
             Actions = new ActionsController(Stats);
             Animations = new AnimationsController
@@ -29,9 +30,15 @@ namespace PlayerManager
 
         public void ActionMove()
         {
-            Actions.Move();
-            Animations.Move(Actions.moveDirection);
-            Rb2D.velocity = Actions.moveDirection;
+            MoveDirection = Actions.Move();
+            Animations.Move(MoveDirection);
+            Rb2D.velocity = MoveDirection;
+        }
+
+        public void HabilityOne()
+        {
+            bool h1 = Actions.HabilityOne();
+            Animations.HabilityOne(h1);
         }
     }
 

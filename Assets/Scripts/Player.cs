@@ -17,6 +17,7 @@ public class Player : PlayerController
     void Update()
     {
         ActionMove();
+        HabilityOne();
     }
 
 }

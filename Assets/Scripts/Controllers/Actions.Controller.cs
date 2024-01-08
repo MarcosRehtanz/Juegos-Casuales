@@ -8,20 +8,23 @@ namespace Actions.Controllers
     public class ActionsController
     {
         public StatisticsModel stats;
-        public Vector2 moveDirection;
         public bool moving;
+        public bool h1;
         public ActionsController(StatisticsModel statistics)
         {
             stats = statistics;
         }
-        public void Move()
+        public Vector2 Move()
         {
             float dirX = Input.GetAxis("Horizontal");
             float dirY = Input.GetAxis("Vertical");
             moving = dirX != 0 || dirY != 0;
             Vector2 move = new(dirX, dirY);
             move.Normalize();
-            moveDirection = stats.Speed * Time.deltaTime * move;
+            return stats.GetSpeed() * Time.deltaTime * move;
+        }
+        public bool HabilityOne(){
+            return Input.GetKey(KeyCode.Q);
         }
     }
 }
