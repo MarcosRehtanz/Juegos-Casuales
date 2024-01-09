@@ -10,20 +10,20 @@ namespace Actions.Controllers
         public StatisticsModel stats;
         public bool moving;
         public bool h1;
+        public Rigidbody2D rigidbody2D;
         public ActionsController(StatisticsModel statistics)
         {
             stats = statistics;
         }
-        public Vector2 Move()
+        public void Move(float x, float y)
         {
-            float dirX = Input.GetAxis("Horizontal");
-            float dirY = Input.GetAxis("Vertical");
-            moving = dirX != 0 || dirY != 0;
-            Vector2 move = new(dirX, dirY);
+            moving = x != 0 || y != 0;
+            Vector2 move = new(x, y);
             move.Normalize();
-            return stats.GetSpeed() * Time.deltaTime * move;
+            rigidbody2D.velocity = stats.Speed() * Time.deltaTime * move;
         }
-        public bool HabilityOne(){
+        public bool HabilityOne()
+        {
             return Input.GetKey(KeyCode.Q);
         }
     }

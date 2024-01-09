@@ -14,12 +14,12 @@ namespace Statistics.Models
     }
     public interface IStats
     {
-        float GetHealt();
-        float GetDamage();
-        float GetSpeedAttack();
-        float GetSpeed();
-        float GetRange();
-        float GetArmor();
+        float Healt();
+        float Damage();
+        float SpeedAttack();
+        float Speed();
+        float Range();
+        float Armor();
     }
     [Serializable]
     public class StatisticsModel : IStats
@@ -29,27 +29,27 @@ namespace Statistics.Models
         {
             _stats = stats;
         }
-        public float GetHealt()
+        public float Healt()
         {
             return _stats.Healt;
         }
-        public float GetDamage()
+        public float Damage()
         {
             return _stats.Damage;
         }
-        public float GetSpeedAttack()
+        public float SpeedAttack()
         {
             return _stats.SpeedAttack;
         }
-        public float GetSpeed()
+        public float Speed()
         {
             return _stats.Speed;
         }
-        public float GetRange()
+        public float Range()
         {
             return _stats.Range;
         }
-        public float GetArmor()
+        public float Armor()
         {
             return _stats.Armor;
         }

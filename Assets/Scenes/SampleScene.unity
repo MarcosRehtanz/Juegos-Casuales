@@ -2396,27 +2396,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4b8bd2e9bb0e4191a12a9a4a17ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats:
-    Healt: 0
-    Damage: 0
-    SpeedAttack: 0
-    Speed: 0
-    Range: 0
-    Armor: 0
   Rb2D: {fileID: 0}
   Actions:
-    stats:
-      Healt: 0
-      Damage: 0
-      SpeedAttack: 0
-      Speed: 0
-      Range: 0
-      Armor: 0
-    moveDirection: {x: 0, y: 0}
     moving: 0
+    h1: 0
   Animations:
     animator: {fileID: 0}
     transform: {fileID: 0}
+  MoveDirection: {x: 0, y: 0}
 --- !u!1 &1702204917
 GameObject:
   m_ObjectHideFlags: 0
