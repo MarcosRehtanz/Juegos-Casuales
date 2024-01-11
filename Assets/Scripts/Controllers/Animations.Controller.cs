@@ -13,7 +13,7 @@ namespace Animations.Controller
 
         public void Move(float x, float y)
         {
-            animator.SetBool("run", x != 0 && y != 0);
+            animator.SetBool("run", x != 0 || y != 0);
 
             if (x != 0)
             {
