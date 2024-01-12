@@ -22,9 +22,9 @@ namespace Actions.Controllers
             move.Normalize();
             rigidbody2D.velocity = stats.Speed() * Time.deltaTime * move;
         }
-        public bool HabilityOne()
+        public void Charge()
         {
-            return Input.GetKey(KeyCode.Q);
+            rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

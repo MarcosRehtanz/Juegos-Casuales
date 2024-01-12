@@ -3,6 +3,7 @@ using Actions.Controllers;
 using Statistics.Models;
 using Animations.Controller;
 using InputController.Controllers;
+using UnityEngine.Experimental.Rendering;
 
 namespace PlayerManager
 {
@@ -13,6 +14,7 @@ namespace PlayerManager
         public ActionsController Actions;
         public AnimationsController Animations;
         public Keyboard controller;
+        public int FPS;
 
         void Start()
         {
@@ -30,19 +32,28 @@ namespace PlayerManager
                 transform = GetComponent<Transform>()
             };
             controller = new Keyboard();
+            Application.targetFrameRate = FPS;
         }
 
         void Update()
         {
+            Application.targetFrameRate = FPS;
+
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
-            bool h1 = Input.GetKey(KeyCode.Q);
+            bool charge = Input.GetKey(KeyCode.Q);
 
-            Actions.Move(x, y);
-            Animations.Move(x, y);
-
-            Animations.HabilityOne(h1);
+            if (charge)
+            {
+                Actions.Charge();
+            }
+            else
+            {
+                Actions.Move(x, y);
+                Animations.Move(x, y);
+            }
+            Animations.HabilityOne(charge);
         }
 
     }
