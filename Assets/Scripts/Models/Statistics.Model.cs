@@ -16,7 +16,7 @@ namespace Statistics.Models
     {
         float Healt();
         float Damage();
-        float SpeedAttack();
+        float SpeedAttack { get; }
         float Speed();
         float Range();
         float Armor();
@@ -25,7 +25,7 @@ namespace Statistics.Models
     public class StatisticsModel : IStats
     {
         private readonly StatsBasic _stats;
-        public StatisticsModel( StatsBasic stats)
+        public StatisticsModel(StatsBasic stats)
         {
             _stats = stats;
         }
@@ -37,7 +37,8 @@ namespace Statistics.Models
         {
             return _stats.Damage;
         }
-        public float SpeedAttack()
+        public float SpeedAttack { get => GetSpeedAttack(); }
+        private float GetSpeedAttack()
         {
             return _stats.SpeedAttack;
         }

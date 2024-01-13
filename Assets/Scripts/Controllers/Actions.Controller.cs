@@ -26,5 +26,17 @@ namespace Actions.Controllers
         {
             rigidbody2D.velocity = Vector2.zero;
         }
+        public void ActionOne(GameObject bullet, Vector3 worldPosition, Vector3 originPosition)
+        {
+            worldPosition.z = 0;
+            originPosition.y += 0.15f;
+            Vector3 direction = worldPosition - originPosition;
+            originPosition += direction * 0.1f;
+            direction.Normalize();
+
+            GameObject gameObject = MonoBehaviour.Instantiate(bullet, originPosition, new Quaternion());
+            Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+            rigidbody2D.velocity = stats.SpeedAttack * Time.deltaTime * direction;
+        }
     }
 }
